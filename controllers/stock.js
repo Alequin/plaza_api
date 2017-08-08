@@ -26,4 +26,10 @@ stockRouter.get("/", function(req, res){
   });
 });
 
+stockRouter.post("/", function(req, res){
+  db.collection("quotes").save(req.body, function(err, results){
+    res.json({response: "stock save route", result: results});
+  });
+});
+
 module.exports = stockRouter;
