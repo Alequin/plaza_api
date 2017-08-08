@@ -25,6 +25,12 @@ stockRouter.get("/", function(req, res){
   });
 });
 
+stockRouter.get("/name/:name", function(req, res){
+  stock.find({name: req.params.name}).toArray(function(err, results){
+    res.json({response: "stock single item by name route", result: results});
+  });
+});
+
 stockRouter.post("/", function(req, res){
   stock.save(req.body, function(err, results){
     res.json({response: "stock save route", result: results});
