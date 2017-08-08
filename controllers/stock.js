@@ -43,4 +43,11 @@ stockRouter.post("/", function(req, res){
   });
 });
 
+
+stockRouter.delete("/", function(req, res){
+  stock.deleteMany(function(err, results){
+    res.json({response: "stock delete all route", result: results});
+  });
+});
+
 module.exports = stockRouter;
