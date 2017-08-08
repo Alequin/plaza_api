@@ -21,7 +21,9 @@ mongoClient.connect("mongodb://localhost:27017/" + collection,
 );
 
 stockRouter.get("/", function(req, res){
-  res.json({response: "stock home route"});
+  db.collection("quotes").find().toArray(function(err, results){
+    res.json({response: "stock home route", result: results});
+  });
 });
 
 module.exports = stockRouter;
