@@ -31,6 +31,12 @@ stockRouter.get("/name/:name", function(req, res){
   });
 });
 
+stockRouter.get("/category/:category", function(req, res){
+  stock.find({category: req.params.category}).toArray(function(err, results){
+    res.json({response: "stock single item by category route", result: results});
+  });
+});
+
 stockRouter.post("/", function(req, res){
   stock.save(req.body, function(err, results){
     res.json({response: "stock save route", result: results});
